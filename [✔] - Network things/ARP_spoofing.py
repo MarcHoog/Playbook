@@ -15,8 +15,9 @@ class ARPspoofer(object):
         pkt = Ether(dst="ff:ff:ff:ff:ff:ff")
         pkt /= ARP(op=1, pdst=ip_destination)
 
-        mac_target = srp(pkt, timeout=2, verbose=False)[0][0][1].hwsrc
+        ans = srp(pkt, timeout=2, verbose=False)[0][0][1].hwsrc
         return mac_target
+
 
     def spoof_arp_cache(self, ip_destination, mac_destination, ip_source):
         print(f'\r [*]Sending spoof Package towards {ip_destination}', end='')
