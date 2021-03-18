@@ -18,14 +18,12 @@ class DHCPstarver(object):
               'This Program is created for learning purposes \n'
               'Created by: Marc Hoogendoorn \n'
               '''Recources:
-        https://cabeggar.github.io/2016/02/21/DHCP-starvation-with-ScaPy/'
         https://www.netmanias.com/en/post/techdocs/5998/dhcp-network-protocol/understanding-the-basic-operations-of-dhcp
         ''')
 
         dhcp_server = input(
             '[?]Fill in the DHCP server that needs to be starved Senpai! OwO *nuzzles your face*  \n \n :  ')
-        amount = input('[?]Fill in the amount of addresses that needs to be starved ^////^ *Is that a bulgie wulgie '
-                       'that i see*\n \n :  ')
+        amount = input('[?]Fill in the amount of addresses that needs to be starved ^////^\n \n :  ')
 
         return dhcp_server, amount
 
