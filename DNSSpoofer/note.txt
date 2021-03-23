@@ -1,0 +1,73 @@
+# Request
+
+<bound method Packet.show of
+<Ether  dst=38:35:fb:56:1c:5d src=00:d8:61:e8:26:57 type=IPv4
+|<IP  version=4 ihl=5 tos=0x0 len=69 id=62450 flags= frag=0 ttl=128 proto=udp chksum=0x0 src=192.168.1.10 dst=192.168.1.1
+|<UDP  sport=54821 dport=domain len=49 chksum=0x839e
+|<DNS  id=4161 qr=0 opcode=QUERY aa=0 tc=0 rd=1 ra=0 z=0 ad=0 cd=0 rcode=ok qdcount=1 ancount=0 nscount=0 arcount=0
+qd=<DNSQR qname='euw.leagueoflegends.com.' qtype=A qclass=IN
+|> an=None ns=None ar=None
+|>>>>>
+
+# Respond
+<bound method Packet.show of
+<Ether  dst=00:d8:61:e8:26:57 src=38:35:fb:56:1c:5d type=IPv4
+|<IP  version=4 ihl=5 tos=0x0 len=495 id=0 flags=DF frag=0 ttl=64 proto=udp chksum=0xb5a2 src=192.168.1.1 dst=192.168.1.10
+|<UDP  sport=domain dport=54821 len=475 chksum=0xeaff
+|<DNS  id=4161 qr=1 opcode=QUERY aa=0 tc=0 rd=1 ra=1 z=0 ad=0 cd=0 rcode=ok qdcount=1 ancount=3 nscount=8 arcount=9
+
+# Querry
+qd=<DNSQR  qname='euw.leagueoflegends.com.' qtype=A qclass=IN
+
+# Answer
+|> an=<DNSRR  rrname='euw.leagueoflegends.com.' type=CNAME rclass=IN ttl=60 rdlen=None rdata='www.leagueoflegends.com.edgekey.net.'
+|<DNSRR  rrname='www.leagueoflegends.com.edgekey.net.' type=CNAME rclass=IN ttl=14127 rdlen=None rdata='e12817.dscj.akamaiedge.net.'
+|<DNSRR  rrname='e12817.dscj.akamaiedge.net.' type=A rclass=IN ttl=20 rdlen=None rdata=23.213.247.222
+
+
+# Fake
+<bound method Packet.show of
+<Ether  dst=00:d8:61:e8:26:57 src=38:35:fb:56:1c:5d type=IPv4
+|<IP  version=4 flags=DF frag=0 proto=udp src=192.168.1.1 dst=192.168.1.10
+|<UDP  sport=domain dport=51258
+|<DNS  id=17132 qr=1 opcode=QUERY rcode=ok qdcount=1 ancount=1 nscount=0 arcount=0
+
+qd=<DNSQR  qname='euw.leagueoflegends.com.' qtype=A qclass=IN |> |>>>>>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Name servers
+|>>> ns=<DNSRR  rrname='dscj.akamaiedge.net.' type=NS rclass=IN ttl=2692 rdlen=None rdata='n0dscj.akamaiedge.net.'
+|<DNSRR  rrname='dscj.akamaiedge.net.' type=NS rclass=IN ttl=2692 rdlen=None rdata='n5dscj.akamaiedge.net.'
+|<DNSRR  rrname='dscj.akamaiedge.net.' type=NS rclass=IN ttl=2692 rdlen=None rdata='n1dscj.akamaiedge.net.'
+|<DNSRR  rrname='dscj.akamaiedge.net.' type=NS rclass=IN ttl=2692 rdlen=None rdata='n2dscj.akamaiedge.net.'
+|<DNSRR  rrname='dscj.akamaiedge.net.' type=NS rclass=IN ttl=2692 rdlen=None rdata='n6dscj.akamaiedge.net.'
+|<DNSRR  rrname='dscj.akamaiedge.net.' type=NS rclass=IN ttl=2692 rdlen=None rdata='n3dscj.akamaiedge.net.'
+|<DNSRR  rrname='dscj.akamaiedge.net.' type=NS rclass=IN ttl=2692 rdlen=None rdata='n4dscj.akamaiedge.net.'
+|<DNSRR  rrname='dscj.akamaiedge.net.' type=NS rclass=IN ttl=2692 rdlen=None rdata='n7dscj.akamaiedge.net.'
+
+|>>>>>>>> ar=<DNSRR  rrname='n0dscj.akamaiedge.net.' type=A rclass=IN ttl=2692 rdlen=None rdata=88.221.81.192
+|<DNSRR  rrname='n0dscj.akamaiedge.net.' type=AAAA rclass=IN ttl=2692 rdlen=None rdata=2600:1480:e800::c0
+|<DNSRR  rrname='n1dscj.akamaiedge.net.' type=A rclass=IN ttl=2692 rdlen=None rdata=2.17.197.108
+|<DNSRR  rrname='n2dscj.akamaiedge.net.' type=A rclass=IN ttl=2692 rdlen=None rdata=2.17.197.63
+|<DNSRR  rrname='n3dscj.akamaiedge.net.' type=A rclass=IN ttl=2692 rdlen=None rdata=2.17.197.70
+|<DNSRR  rrname='n4dscj.akamaiedge.net.' type=A rclass=IN ttl=2692 rdlen=None rdata=23.41.178.60
+|<DNSRR  rrname='n5dscj.akamaiedge.net.' type=A rclass=IN ttl=2692 rdlen=None rdata=2.17.197.157
+|<DNSRR  rrname='n6dscj.akamaiedge.net.' type=A rclass=IN ttl=2692 rdlen=None rdata=2.17.107.117
+|<DNSRR  rrname='n7dscj.akamaiedge.net.' type=A rclass=IN ttl=2692 rdlen=None rdata=81.243.1.167 |>>>>>>>>> |>>>>>
